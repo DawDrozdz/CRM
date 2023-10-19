@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% block title %} Deal {% endblock %}
+{% block site %}
+{% load bootstrap %}
+
+<div class="alert alert-primary" role="alert">
+        <div style="overflow: hidden;">
+        <div style="float: left;">
+            <div class="inline-block-element">
+    <h5> BLUE CRM | </h5>
+            </div>
+            <div class="inline-block-element">
+            <a href="{% url 'deals' %}" class="btn btn-outline-primary">Deal</a>
+            </div>
+        </div>
+        <div style="overflow: hidden;">
+    <div style="float: right;">
+{% if user.is_authenticated %}
+    <a href="{% url 'out' %}" class="btn btn-outline-primary"> Log out</a>
+{% else %}
+    <a href="{% url 'login' %}" class="btn btn-outline-primary"> Log in</a>
+{% endif %}
+        </div>
+</div>
+</div>
+</div>
+
+<div class="card">
+  <h5 class="card-header">Type: {{ details.choose }}</h5>
+  <div class="card-body">
+    <h5 class="card-title"> Describe: {{ details.describe }}</h5>
+
+      <th><a href="{% url 'remove_deals' details.id%}" class="btn btn-outline-danger">Delete</a></th>
+    <th><a href="{% url 'update_deals' details.id%}" class="btn btn-outline-primary">Update</a></th>
+  </div>
+</div>
+
+
+{% endblock %}

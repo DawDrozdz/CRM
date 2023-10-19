@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% block title %} Contact {% endblock %}
+{% block site %}
+{% load bootstrap %}
+
+<div class="alert alert-primary" role="alert">
+        <div style="overflow: hidden;">
+        <div style="float: left;">
+            <div class="inline-block-element">
+    <h5> BLUE CRM | </h5>
+            </div>
+            <div class="inline-block-element">
+            <a href="{% url 'contacts' %}" class="btn btn-outline-primary">Contacts</a>
+            </div>
+        </div>
+        <div style="overflow: hidden;">
+    <div style="float: right;">
+{% if user.is_authenticated %}
+    <a href="{% url 'out' %}" class="btn btn-outline-primary"> Log out</a>
+{% else %}
+    <a href="{% url 'login' %}" class="btn btn-outline-primary"> Log in</a>
+{% endif %}
+        </div>
+</div>
+</div>
+</div>
+
+<div class="card">
+  <h5 class="card-header">Type: {{ contact.choose }}</h5>
+  <div class="card-body">
+    <h5 class="card-title">Name: {{ contact.name }}</h5>
+    <p class="card-text">NIP: {{ NIP_numer }}</p>
+    <p class="card-text">Phone number: {{ contact.phone_number }}</p>
+    <p class="card-text">E-mail: {{ contact.email_address }}</p>
+    <p class="card-text">Invoice: {{ contact.invoice }}</p>
+    <p class="card-text">Status: {{ contact.type }}</p>
+      <th><a href="{% url 'remove' contact.id%}" class="btn btn-outline-danger">Delete</a></th>
+    <th><a href="{% url 'update' contact.id%}" class="btn btn-outline-primary">Update</a></th>
+  </div>
+</div>
+
+
+{% endblock %}

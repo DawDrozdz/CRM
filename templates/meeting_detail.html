@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% block title %} Meeting {% endblock %}
+{% block site %}
+{% load bootstrap %}
+
+<div class="alert alert-primary" role="alert">
+        <div style="overflow: hidden;">
+        <div style="float: left;">
+            <div class="inline-block-element">
+    <h5> BLUE CRM | </h5>
+            </div>
+            <div class="inline-block-element">
+            <a href="{% url 'meeting' %}" class="btn btn-outline-primary">Meeting</a>
+            </div>
+        </div>
+        <div style="overflow: hidden;">
+    <div style="float: right;">
+{% if user.is_authenticated %}
+    <a href="{% url 'out' %}" class="btn btn-outline-primary"> Log out</a>
+{% else %}
+    <a href="{% url 'login' %}" class="btn btn-outline-primary"> Log in</a>
+{% endif %}
+        </div>
+</div>
+</div>
+</div>
+
+<div class="card">
+  <h5 class="card-header">Type: {{ meeting.meeting_type }}</h5>
+  <div class="card-body">
+    <h5 class="card-title">Customer: {{ meeting_type.person_customer }}</h5>
+    <p class="card-text">Contact: {{ meeting_type.person_contact }}</p>
+    <p class="card-text">Date: {{ meeting_type.meeting }}</p>
+    <p class="card-text">Note: {{ meeting.note }}</p>
+      <th><a href="{% url 'remove_meetings' meeting.id%}" class="btn btn-outline-danger">Delete</a></th>
+    <th><a href="{% url 'update_meeting' meeting.id%}" class="btn btn-outline-primary">Update</a></th>
+  </div>
+</div>
+
+
+{% endblock %}

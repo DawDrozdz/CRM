@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% block title %} remove {% endblock %}
+{% block site %}
+{% load bootstrap %}
+
+<div class="card mx-auto" style="max-width: 36rem;">
+  <div class="card-header"><h2>remove</h2></div>
+  <div class="card-body">
+    <h2 class="card-title">Do you want remove it?</h2>
+    <p class="card-text">
+    <form method="post">
+    {% csrf_token %}
+    {{ remove }}
+    <br>
+    <br>
+    <button type="submit" class="btn btn-danger" >Remove</button>
+        <a href="{% url 'deals' %}" class="btn btn-primary">Back to deals</a>
+     </form>
+  </div>
+</div>
+
+{% endblock %}
