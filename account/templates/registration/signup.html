@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% block title %} Sing up {% endblock %}
+{% block site %}
+{% load bootstrap %}
+
+
+<div class="card mx-auto" style="width: 36rem;">
+  <div class="card-body">
+    <h5 class="card-title">Sign up</h5>
+    <hr>
+    <p class="card-text">
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}</p>
+    <br>
+  <button type="submit" class = "btn btn-outline-primary ">Sign Up</button>
+    <a href="{% url 'login' %}" class="btn btn-outline-warning">Back to log-in</a>
+      </form>
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
